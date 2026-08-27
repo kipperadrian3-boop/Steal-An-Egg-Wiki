@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Steal an Egg Wiki — Comprehensive Roblox Database & Guide</title>
+  <meta name="description" content="The definitive open-source Wiki & Database for the Roblox game Steal an Egg. Biomes, Speed requirements, Pets, Mutations, Weapons, and Income Multipliers.">
+  <meta name="keywords" content="Steal an Egg, Roblox, Wiki, Pets, Biomes, Speed, Mutations, Sakura Incubator, Codes, Guide">
+  <meta name="author" content="Steal an Egg Community">
+  
+  <!-- Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand-group">
+        <a href="#overview" class="brand-logo" title="Steal an Egg Wiki Home">🥚</a>
+        <div class="brand-title-wrap">
+          <h1>STEAL AN EGG <span class="badge-version">WIKI v1.4.2</span></h1>
+          <span class="brand-subtitle">Official Community Database & Strategy Guide</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button id="themeToggleBtn" class="btn-header" title="Toggle Theme Contrast">
+          <span id="themeIcon">🌓</span> Theme
+        </button>
+        <a href="https://github.com/kipperadrian3-boop/Steal-An-Egg-Wiki" target="_blank" rel="noopener noreferrer" class="btn-header primary" title="View Source on GitHub">
+          <span>⚡</span> GitHub Repo
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky Tabs Navigation -->
+  <nav class="nav-tabs-wrapper" aria-label="Wiki Sections">
+    <div class="nav-tabs" id="tabBar">
+      <button class="tab-btn active" data-tab="overview">
+        <span class="tab-icon">📖</span> Overview & Guide
+      </button>
+      <button class="tab-btn" data-tab="biomes">
+        <span class="tab-icon">🗺️</span> Biomes & Guardians <span class="tab-badge" id="biomeCountBadge">10</span>
+      </button>
+      <button class="tab-btn" data-tab="pets">
+        <span class="tab-icon">🥚</span> Pets & Eggs Database <span class="tab-badge" id="petCountBadge">86</span>
+      </button>
+      <button class="tab-btn" data-tab="mutations">
+        <span class="tab-icon">⚡</span> Mutations & Incubator
+      </button>
+      <button class="tab-btn" data-tab="upgrades">
+        <span class="tab-icon">🏏</span> Weapons, Base & Speed
+      </button>
+      <button class="tab-btn" data-tab="calculator">
+        <span class="tab-icon">🧮</span> Income Calculator
+      </button>
+      <button class="tab-btn" data-tab="codes">
+        <span class="tab-icon">🎁</span> Codes & Events
+      </button>
+      <button class="tab-btn" data-tab="opensource">
+        <span class="tab-icon">🌐</span> Open Source / API
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Application Container -->
+  <main class="main-content">
+
+    <!-- ==========================================
+         TAB 1: OVERVIEW & BEGINNER GUIDE
+         ========================================== -->
+    <section id="panel-overview" class="tab-panel active">
+      <div class="hero-banner">
+        <span class="hero-tag">ROBLOX EXPERIENCE WIKI</span>
+        <h2 class="hero-title">Welcome to the Steal an Egg Wiki</h2>
+        <p class="hero-desc">
+          Steal an Egg is an intense Roblox simulation experience where players infiltrate hostile biomes, 
+          steal precious eggs from ferocious guardians, hatch high-earning pets, and upgrade their base & speed to conquer all 10 biomes.
+        </p>
+        <div class="hero-stats-grid">
+          <div class="stat-item">
+            <span class="stat-num">10</span>
+            <span class="stat-label">Explorable Biomes</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">80+</span>
+            <span class="stat-label">Hatchable Pets</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">5 Min</span>
+            <span class="stat-label">World Egg Reset Timer</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">2.5B</span>
+            <span class="stat-label">Max Speed Requirement</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <h2><span>⚡</span> Core Gameplay Loop</h2>
+        <p>Master these fundamentals to progress from a forest scavenger to an endgame powerhouse.</p>
+      </div>
+
+      <div class="grid-cards">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">1. Steal Eggs from Nests</h3>
+            <span class="card-badge">Phase 1</span>
+          </div>
+          <div class="card-body">
+            Venture out into the biomes. Locate nests holding eggs. The larger and more exotic the egg, the higher the rarity and multiplier inside! Beware: touching an egg immediately triggers the biome guardian.
+          </div>
+          <div class="card-footer">
+            <span>Risk Level: High</span>
+            <span>Reset: ~5 Minutes</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">2. Escape the Guardian</h3>
+            <span class="card-badge">Phase 2</span>
+          </div>
+          <div class="card-body">
+            Once you pick up an egg, the parent beast will hunt you down. You must carry the egg back safely to your base pen. If you get hit, you lose the egg and get flung back!
+          </div>
+          <div class="card-footer">
+            <span>Crucial Stat: Speed</span>
+            <span>Tool: Bat / Evasion</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">3. Hatch & Generate Passive Cash</h3>
+            <span class="card-badge">Phase 3</span>
+          </div>
+          <div class="card-body">
+            Drop the egg into your Pen incubator to hatch it. Each pet produces passive cash per second ($/s). Mutations (Golden, Rainbow, Spirit Bloom) multiply this income up to 3x!
+          </div>
+          <div class="card-footer">
+            <span>Income: Passive $/s</span>
+            <span>Rarities: Common to Divine</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">4. Upgrade Base & Treadmill</h3>
+            <span class="card-badge">Phase 4</span>
+          </div>
+          <div class="card-body">
+            Reinvest your pet earnings into the Treadmill to pump your movement speed, and expand your Pen capacity to house more simultaneous pets. Speed unlocks access to higher tier biomes.
+          </div>
+          <div class="card-footer">
+            <span>Upgrades: Pen & Speed</span>
+            <span>Goal: Cherry Blossom</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert-box">
+        <div class="alert-icon">💡</div>
+        <div>
+          <div class="alert-title">Pro Tip: Saturday Admin Abuse Events</div>
+          <div class="alert-desc">
+            Every Saturday, the game hosts special community events where egg spawn rates and speed multipliers are drastically boosted. This is the optimal window to farm endgame biomes like Cosmic and Cherry Blossom!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 2: BIOMES & GUARDIANS
+         ========================================== -->
+    <section id="panel-biomes" class="tab-panel">
+      <div class="section-header">
+        <h2><span>🗺️</span> Biomes & Guardian Encounters</h2>
+        <p>Every biome has a strict minimum speed requirement. Ensure your speed exceeds the threshold before entering to avoid guardian wipes.</p>
+      </div>
+
+      <div class="grid-cards" id="biomesContainer">
+        <!-- Dynamically rendered via app.js from biomes.json -->
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 3: PETS & EGGS DATABASE
+         ========================================== -->
+    <section id="panel-pets" class="tab-panel">
+      <div class="section-header">
+        <h2><span>🥚</span> All Pets & Eggs Database</h2>
+        <p>Explore all 80+ pets, their base earnings, tiers, biomes, and egg sources. Use real-time filters and search.</p>
+      </div>
+
+      <!-- Filter / Search Toolbar -->
+      <div class="filter-bar">
+        <div class="search-input-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="petSearchInput" placeholder="Search pet name, egg, biome, or rarity (e.g. Kitsune, Cosmic, Divine)..." autocomplete="off">
+        </div>
+        
+        <div class="filter-row">
+          <div class="filter-pills" id="biomeFilterPills">
+            <button class="filter-pill active" data-biome="all">All Biomes</button>
+            <button class="filter-pill" data-biome="forest">Forest</button>
+            <button class="filter-pill" data-biome="lake">Lake</button>
+            <button class="filter-pill" data-biome="desert">Desert</button>
+            <button class="filter-pill" data-biome="jungle">Jungle</button>
+            <button class="filter-pill" data-biome="snow">Snow</button>
+            <button class="filter-pill" data-biome="volcano">Volcano</button>
+            <button class="filter-pill" data-biome="abyss-ocean">Abyss</button>
+            <button class="filter-pill" data-biome="prehistoric">Prehistoric</button>
+            <button class="filter-pill" data-biome="cosmic">Cosmic</button>
+            <button class="filter-pill" data-biome="cherry-blossom">Cherry Blossom</button>
+            <button class="filter-pill" data-biome="brainrot">Brainrot</button>
+          </div>
+
+          <div>
+            <select id="raritySelect" class="filter-select" aria-label="Filter by Rarity">
+              <option value="all">All Rarities</option>
+              <option value="Common">Common</option>
+              <option value="Uncommon">Uncommon</option>
+              <option value="Rare">Rare</option>
+              <option value="Epic">Epic</option>
+              <option value="Legendary">Legendary</option>
+              <option value="Mythic">Mythic</option>
+              <option value="Cosmic">Cosmic</option>
+              <option value="Secret">Secret</option>
+              <option value="Eternal">Eternal</option>
+              <option value="Divine">Divine</option>
+              <option value="Brainrot">Brainrot Store</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Count -->
+      <div style="margin-bottom: 16px; font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">
+        Showing <span id="petResultsCount" style="color: var(--text-primary); font-weight: 700;">0</span> pets matching criteria
+      </div>
+
+      <!-- Pet Cards Grid -->
+      <div class="pets-grid" id="petsGrid">
+        <!-- Populated via JavaScript -->
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 4: MUTATIONS & INCUBATOR
+         ========================================== -->
+    <section id="panel-mutations" class="tab-panel">
+      <div class="section-header">
+        <h2><span>⚡</span> Pet Mutations & The Sakura Incubator</h2>
+        <p>Mutations apply multiplicative multipliers to your pets' base income. Mutations stack with Egg Size bonuses.</p>
+      </div>
+
+      <div class="wiki-table-wrap">
+        <table class="wiki-table">
+          <thead>
+            <tr>
+              <th>Mutation Type</th>
+              <th>Multiplier</th>
+              <th>Source / Unlock</th>
+              <th>Effect Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Silver</strong></td>
+              <td><code>1.25x Multiplier</code></td>
+              <td>Random Hatch Chance (All Biomes)</td>
+              <td>Gives the pet a sleek metallic sheen with a +25% earnings boost.</td>
+            </tr>
+            <tr>
+              <td><strong>Bloom</strong></td>
+              <td><code>1.5x Multiplier</code></td>
+              <td>Sakura Incubator (Cherry Blossom)</td>
+              <td>Infused with fresh blossom petals. Boosts income by +50%.</td>
+            </tr>
+            <tr>
+              <td><strong>Golden</strong></td>
+              <td><code>2.0x Multiplier</code></td>
+              <td>Random Hatch Chance / Golden Nests</td>
+              <td>Pure golden glow that doubles base income per second.</td>
+            </tr>
+            <tr>
+              <td><strong>Rainbow</strong></td>
+              <td><code>2.5x Multiplier</code></td>
+              <td>Rare World Mutation Event</td>
+              <td>Cycling chromatic hues with a massive 2.5x passive money multiplier.</td>
+            </tr>
+            <tr>
+              <td><strong>Spirit Bloom</strong></td>
+              <td><code>3.0x Multiplier</code></td>
+              <td>Sakura Incubator Master Roll</td>
+              <td>The highest standard mutation in the game. Triples all base earnings.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid-cards">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">🌸 The Sakura Incubator</h3>
+            <span class="card-badge">Cherry Blossom Zone</span>
+          </div>
+          <div class="card-body">
+            Located deep inside the Cherry Blossom biome. Unlocking the incubator requires obtaining the <strong>Sakura Crane</strong> pet from the branch nests. Once unlocked, you can place eggs inside to roll exclusive <em>Bloom (1.5x)</em> and <em>Spirit Bloom (3.0x)</em> mutations.
+          </div>
+          <div class="card-footer">
+            <span>Unlock: Sakura Crane</span>
+            <span>Max Multiplier: 3.0x</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">📐 Income Calculation Formula</h3>
+            <span class="card-badge">Formula</span>
+          </div>
+          <div class="card-body">
+            <div class="code-box">
+              <code>Final $/s = Base Income × Egg Size Multiplier × Mutation Bonus × Index Perks</code>
+            </div>
+            Always prioritize mutated pets from higher biomes over regular pets of the same tier.
+          </div>
+          <div class="card-footer">
+            <span>Stacking: Multiplicative</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 5: WEAPONS, BASE & SPEED
+         ========================================== -->
+    <section id="panel-upgrades" class="tab-panel">
+      <div class="section-header">
+        <h2><span>🏏</span> Weapons, Base Pen & Treadmill Scaling</h2>
+        <p>Speed is power, and bats are your defensive shield. Upgrade your tools to survive PvP and guardian attacks.</p>
+      </div>
+
+      <div class="grid-cards">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Wooden to Cosmic Bats</h3>
+            <span class="card-badge">PvP Weapon</span>
+          </div>
+          <div class="card-body">
+            Equip bats to knock out competing players holding eggs and snatch their loot. Bats are also used during interactive world events like the <em>Great Bloom</em> to smash enchanted trees for rare mutation seeds.
+          </div>
+          <div class="card-footer">
+            <span>Knockback: Upgradable</span>
+            <span>Range: Melee Arc</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Base Pen Expansion</h3>
+            <span class="card-badge">Capacity</span>
+          </div>
+          <div class="card-body">
+            Your initial pen only holds a small number of pets. Upgrading pen capacity increases the number of pets generating income simultaneously. Essential for compounding your hourly cashflow.
+          </div>
+          <div class="card-footer">
+            <span>Max Slots: 25+</span>
+            <span>Compounding: High</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Treadmill Speed Training</h3>
+            <span class="card-badge">Speed Generator</span>
+          </div>
+          <div class="card-body">
+            Train on your base treadmill while AFK or between runs. Higher-tier treadmills provide accelerated speed gains per second, allowing you to bridge the gap into late-game zones.
+          </div>
+          <div class="card-footer">
+            <span>AFK Friendly: Yes</span>
+            <span>Max Cap: 2.5B+</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-header" style="margin-top: 20px;">
+        <h2><span>🏆</span> Pet Index Rewards</h2>
+        <p>Registering unique pets in your collection index permanently boosts your account stats.</p>
+      </div>
+
+      <div class="wiki-table-wrap">
+        <table class="wiki-table">
+          <thead>
+            <tr>
+              <th>Index Completion</th>
+              <th>Reward</th>
+              <th>Bonus Effect</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Complete Forest Index (8/8)</td>
+              <td>+100 Speed & +5% Money Boost</td>
+              <td>Starter boost to breeze through Lake & Desert.</td>
+            </tr>
+            <tr>
+              <td>Complete Lake Index (8/8)</td>
+              <td>Swan Bat Skin & +10% Money Boost</td>
+              <td>Enhanced swing speed against lake thieves.</td>
+            </tr>
+            <tr>
+              <td>Complete Desert Index (8/8)</td>
+              <td>Golden Sphinx Aura & +2,500 Speed</td>
+              <td>Immunity to quicksand slow effects.</td>
+            </tr>
+            <tr>
+              <td>Complete Jungle Index (8/8)</td>
+              <td>+15% Pet Income Multiplier</td>
+              <td>Permanent passive compounding.</td>
+            </tr>
+            <tr>
+              <td>Complete Cherry Blossom (8/8)</td>
+              <td>Spirit Kitsune Trail & +25% Speed</td>
+              <td>Supreme endgame speed aura.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 6: MULTIPLIER & INCOME CALCULATOR
+         ========================================== -->
+    <section id="panel-calculator" class="tab-panel">
+      <div class="section-header">
+        <h2><span>🧮</span> Interactive Pet Income Calculator</h2>
+        <p>Calculate exact cash-per-second output based on pet base earnings, egg size bonus, and active mutations.</p>
+      </div>
+
+      <div class="calc-container">
+        <div class="calc-form">
+          <div class="calc-group">
+            <label for="calcPetSelect">Select Pet:</label>
+            <select id="calcPetSelect" class="calc-select">
+              <!-- Populated by JS -->
+            </select>
+          </div>
+
+          <div class="calc-group">
+            <label for="calcSizeSelect">Egg Size Multiplier:</label>
+            <select id="calcSizeSelect" class="calc-select">
+              <option value="1">Standard Size Egg (1.0x)</option>
+              <option value="1.25">Medium Egg (1.25x)</option>
+              <option value="1.5">Large Egg (1.5x)</option>
+              <option value="2.0">Giant Biome Egg (2.0x)</option>
+              <option value="3.0">Colossal Guardian Egg (3.0x)</option>
+            </select>
+          </div>
+
+          <div class="calc-group">
+            <label for="calcMutationSelect">Mutation Applied:</label>
+            <select id="calcMutationSelect" class="calc-select">
+              <option value="1">No Mutation (1.0x)</option>
+              <option value="1.25">Silver (1.25x)</option>
+              <option value="1.5">Bloom (1.5x)</option>
+              <option value="2.0">Golden (2.0x)</option>
+              <option value="2.5">Rainbow (2.5x)</option>
+              <option value="3.0">Spirit Bloom (3.0x)</option>
+            </select>
+          </div>
+
+          <div class="calc-group">
+            <label for="calcPetCount">Number of Duplicate Pets in Pen:</label>
+            <input type="number" id="calcPetCount" class="calc-input" value="1" min="1" max="50">
+          </div>
+        </div>
+
+        <div class="calc-result-box">
+          <div>
+            <div class="calc-result-header">Estimated Total Passive Income</div>
+            <div class="calc-big-num" id="calcTotalIncome">$0 / s</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);" id="calcSubtext">Select options on the left to calculate.</div>
+          </div>
+
+          <div class="calc-breakdown">
+            <div class="calc-breakdown-row">
+              <span>Base Income / Unit:</span>
+              <span id="calcBreakdownBase">$0/s</span>
+            </div>
+            <div class="calc-breakdown-row">
+              <span>Combined Multiplier:</span>
+              <span id="calcBreakdownMult">1.0x</span>
+            </div>
+            <div class="calc-breakdown-row">
+              <span>Earnings per Minute:</span>
+              <span id="calcBreakdownMin">$0/m</span>
+            </div>
+            <div class="calc-breakdown-row">
+              <span>Earnings per Hour:</span>
+              <span id="calcBreakdownHour">$0/hr</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 7: CODES & EVENTS TRACKER
+         ========================================== -->
+    <section id="panel-codes" class="tab-panel">
+      <div class="section-header">
+        <h2><span>🎁</span> Codes & Community Events</h2>
+        <p>Stay informed regarding developer codes, promotions, and weekly live server events.</p>
+      </div>
+
+      <div class="alert-box" style="border-left-color: #ffffff;">
+        <div class="alert-icon">⚠️</div>
+        <div>
+          <div class="alert-title">Official Code Status: No Active Code System</div>
+          <div class="alert-desc">
+            As of August 2026, <strong>Steal an Egg does not feature an in-game promo code redemption system</strong>. The developers have not released any active codes. 
+            Beware of fake YouTube or TikTok videos asking for account details in exchange for "secret codes"!
+          </div>
+        </div>
+      </div>
+
+      <div class="section-header" style="margin-top: 24px;">
+        <h2><span>📅</span> Weekly Event Schedule</h2>
+      </div>
+
+      <div class="grid-cards">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Admin Abuse Saturday</h3>
+            <span class="card-badge">Recurring Weekly</span>
+          </div>
+          <div class="card-body">
+            Every Saturday, developer admins join public servers to trigger super-boosted egg spawn rates, double speed milestones, and giant guardian challenges.
+          </div>
+          <div class="card-footer">
+            <span>Schedule: Saturdays</span>
+            <span>Bonus: 2x Speed / Fast Spawns</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">The Great Bloom Event</h3>
+            <span class="card-badge">Seasonal</span>
+          </div>
+          <div class="card-body">
+            Sakura blossom trees spawn across all 10 biomes. Hit trees with your bat to collect spirit petals and roll exclusive Cherry Blossom mutation buffs.
+          </div>
+          <div class="card-footer">
+            <span>Location: All Biomes</span>
+            <span>Reward: Spirit Blossoms</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 8: OPEN SOURCE & API
+         ========================================== -->
+    <section id="panel-opensource" class="tab-panel">
+      <div class="section-header">
+        <h2><span>🌐</span> Open Source Repository & Developer API</h2>
+        <p>This entire Wiki is 100% free and open-source under the MIT License. You can inspect the source code, fork the repo, or use our clean JSON endpoints.</p>
+      </div>
+
+      <div class="grid-cards">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">GitHub Repository</h3>
+            <span class="card-badge">Open Source</span>
+          </div>
+          <div class="card-body">
+            All HTML, CSS, JavaScript, and JSON data files are hosted openly on GitHub. Contributions, bug reports, and new pet submissions via Pull Requests are welcome!
+            <div class="code-box" style="margin-top: 14px;">
+              <code>https://github.com/kipperadrian3-boop/Steal-An-Egg-Wiki</code>
+              <button class="btn-copy" onclick="navigator.clipboard.writeText('https://github.com/kipperadrian3-boop/Steal-An-Egg-Wiki'); alert('GitHub Link Copied!');">Copy</button>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/kipperadrian3-boop/Steal-An-Egg-Wiki" target="_blank" rel="noopener noreferrer" style="color: var(--text-primary); text-decoration: underline;">
+              Visit Repository ↗
+            </a>
+            <span>License: MIT</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Raw JSON Endpoints</h3>
+            <span class="card-badge">REST Data</span>
+          </div>
+          <div class="card-body">
+            Build your own Discord bots, calculators, or companion apps using our structured JSON dataset:
+            <ul style="margin: 10px 0 0 20px; line-height: 1.8;">
+              <li><code>data/biomes.json</code> - All 10 biomes & guardians</li>
+              <li><code>data/pets.json</code> - 80+ pets, income & rarities</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <span>Format: JSON</span>
+            <span>CORS Friendly: Yes</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">MIT License</h3>
+          <span class="card-badge">Free Software</span>
+        </div>
+        <div class="card-body" style="font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.6; color: var(--text-muted);">
+          Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software.
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal for Pet Details View -->
+  <div id="petModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalPetName">
+    <div class="modal-content">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close dialog">✕</button>
+      <div id="modalBody">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <p><strong>Steal an Egg Wiki</strong> — Community Open-Source Project.</p>
+        <p style="margin-top: 4px; font-size: 0.78rem;">Not affiliated with Roblox Corporation. All trademarks and game assets belong to their respective creators.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#overview">Overview</a>
+        <a href="#biomes">Biomes</a>
+        <a href="#pets">Pets</a>
+        <a href="#calculator">Calculator</a>
+        <a href="https://github.com/kipperadrian3-boop/Steal-An-Egg-Wiki" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
