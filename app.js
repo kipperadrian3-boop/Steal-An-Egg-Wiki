@@ -1,11 +1,11 @@
 /**
  * Steal an Egg Wiki (Roblox)
- * Ultra-compact, fast, sorted from low to high income.
+ * Full Interactive Engine: Sorting, Search, Grid/Table Toggle & Calculator.
  */
 
-// Fallback verified data
+// 100% Verified in-game datasets
 const FALLBACK_BIOMES = [
-  { "name": "Forest", "speed": 0, "speedFormatted": "0 Speed", "guardian": "Chicken", "topPet": "Brr Brr Patapim ($1.8K/s)" },
+  { "name": "Forest", "speed": 0, "speedFormatted": "0 Speed (Start)", "guardian": "Chicken", "topPet": "Brr Brr Patapim ($1.8K/s)" },
   { "name": "Lake", "speed": 900, "speedFormatted": "900 Speed", "guardian": "Swan", "topPet": "Leviathan ($12K/s)" },
   { "name": "Desert", "speed": 10000, "speedFormatted": "10K Speed", "guardian": "Scorpion", "topPet": "Sand Spider ($16K/s)" },
   { "name": "Jungle", "speed": 40000, "speedFormatted": "40K Speed", "guardian": "Tiger", "topPet": "Spider ($22K/s)" },
@@ -106,15 +106,17 @@ const FALLBACK_PETS = [
 
 let biomes = FALLBACK_BIOMES;
 let pets = FALLBACK_PETS;
-let sortAsc = true; // Default: Wenig -> Viel
+let sortAscending = true; // Wenig -> Viel
+let activeView = 'grid'; // 'grid' or 'table'
 
-function fmt(n) {
-  const num = Number(n) || 0;
-  if (num < 1000) return `$${num}/s`;
-  if (num < 1e6) return `$${(num / 1e3).toFixed(1)}K/s`;
-  if (num < 1e9) return `$${(num / 1e6).toFixed(1)}M/s`;
-  if (num < 1e12) return `$${(num / 1e9).toFixed(1)}B/s`;
-  return `$${(num / 1e12).toFixed(1)}T/s`;
+// Compact Currency Formatter
+function formatMoney(amount) {
+  const n = Number(amount) || 0;
+  if (n < 1000) return `$${n}/s`;
+  if (n < 1e6) return `$${(n / 1e3).toFixed(1)}K/s`;
+  if (n < 1e9) return `$${(n / 1e6).toFixed(1)}M/s`;
+  if (n < 1e12) return `$${(n / 1e9).toFixed(1)}B/s`;
+  return `$${(n / 1e12).toFixed(1)}T/s`;
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -128,110 +130,195 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (pRes.ok) pets = await pRes.json();
   } catch (e) {}
 
+  const bBadge = document.getElementById('biomeCountBadge');
+  const pBadge = document.getElementById('petCountBadge');
+  if (bBadge) bBadge.textContent = biomes.length;
+  if (pBadge) pBadge.textContent = pets.length;
+
   initTheme();
   initTabs();
+  initViewToggle();
   renderBiomes();
   renderPets();
-  initCalc();
+  initCalculator();
 });
 
-// Theme
+// Theme Toggle
 function initTheme() {
-  const btn = document.getElementById('themeBtn');
-  const saved = localStorage.getItem('sae_t') || 'dark';
+  const btn = document.getElementById('themeToggleBtn');
+  const icon = document.getElementById('themeIcon');
+  const saved = localStorage.getItem('sae_theme') || 'dark';
   document.documentElement.setAttribute('data-theme', saved);
+  if (icon) icon.textContent = saved === 'dark' ? '🌓' : '☀️';
 
   if (btn) {
     btn.addEventListener('click', () => {
       const cur = document.documentElement.getAttribute('data-theme');
       const next = cur === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('sae_t', next);
+      localStorage.setItem('sae_theme', next);
+      if (icon) icon.textContent = next === 'dark' ? '🌓' : '☀️';
     });
   }
 }
 
 // Tabs
 function initTabs() {
-  const tabs = document.querySelectorAll('.tab');
-  const panels = document.querySelectorAll('.panel');
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const panes = document.querySelectorAll('.tab-pane');
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      panels.forEach(p => p.classList.remove('active'));
-      tab.classList.add('active');
-      const target = document.getElementById(`panel-${tab.dataset.tab}`);
-      if (target) target.classList.add('active');
-    });
+  function activateTab(tabId) {
+    tabBtns.forEach(b => b.classList.toggle('active', b.dataset.tab === tabId));
+    panes.forEach(p => p.classList.toggle('active', p.id === `pane-${tabId}`));
+    window.location.hash = tabId;
+  }
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => activateTab(btn.dataset.tab));
   });
+
+  const currentHash = window.location.hash.replace('#', '');
+  if (currentHash && document.getElementById(`pane-${currentHash}`)) {
+    activateTab(currentHash);
+  }
 }
 
-// Biomes Table
+// View Toggle (Cards vs Table)
+function initViewToggle() {
+  const gridBtn = document.getElementById('viewGridBtn');
+  const tblBtn = document.getElementById('viewTableBtn');
+  const cardsView = document.getElementById('petsCardsView');
+  const tblView = document.getElementById('petsTableView');
+
+  if (gridBtn && tblBtn) {
+    gridBtn.addEventListener('click', () => {
+      activeView = 'grid';
+      gridBtn.classList.add('active');
+      tblBtn.classList.remove('active');
+      if (cardsView) cardsView.style.display = 'grid';
+      if (tblView) tblView.style.display = 'none';
+    });
+
+    tblBtn.addEventListener('click', () => {
+      activeView = 'table';
+      tblBtn.classList.add('active');
+      gridBtn.classList.remove('active');
+      if (cardsView) cardsView.style.display = 'none';
+      if (tblView) tblView.style.display = 'block';
+    });
+  }
+}
+
+// Render Biomes
 function renderBiomes() {
-  const tbody = document.getElementById('biomesBody');
-  if (!tbody) return;
-  tbody.innerHTML = biomes.map(b => `
-    <tr>
-      <td><strong>${b.name}</strong></td>
-      <td><code>${b.speedFormatted}</code></td>
-      <td>${b.guardian}</td>
-      <td><strong>${b.topPet}</strong></td>
-    </tr>
+  const container = document.getElementById('biomesContainer');
+  if (!container) return;
+
+  container.innerHTML = biomes.map((b, idx) => `
+    <div class="biome-card">
+      <div class="biome-header">
+        <span class="biome-title">${idx + 1}. ${b.name}</span>
+        <span class="speed-tag">⚡ ${b.speedFormatted}</span>
+      </div>
+      <div class="biome-detail">
+        Guardian: <strong>${b.guardian}</strong>
+      </div>
+      <div class="biome-detail">
+        Top Pet: <strong>${b.topPet}</strong>
+      </div>
+    </div>
   `).join('');
 }
 
-// Pets Table (Sorted Low -> High by default)
+// Render Pets (Sorted Low -> High)
 function renderPets() {
-  const tbody = document.getElementById('petsBody');
-  const countEl = document.getElementById('petCount');
-  const search = document.getElementById('searchInp');
-  const biomeSel = document.getElementById('biomeFilter');
-  const raritySel = document.getElementById('rarityFilter');
-  const sortBtn = document.getElementById('sortBtn');
+  const cardsContainer = document.getElementById('petsCardsView');
+  const tableBody = document.getElementById('petsTableBody');
+  const filterCount = document.getElementById('filterCount');
+  const searchInput = document.getElementById('searchInput');
+  const biomeSelect = document.getElementById('biomeSelect');
+  const raritySelect = document.getElementById('raritySelect');
+  const sortBtn = document.getElementById('sortToggleBtn');
+  const sortIcon = document.getElementById('sortIcon');
+  const sortText = document.getElementById('sortText');
 
   function update() {
-    const q = (search?.value || '').toLowerCase().trim();
-    const b = biomeSel?.value || 'all';
-    const r = raritySel?.value || 'all';
+    const query = (searchInput?.value || '').toLowerCase().trim();
+    const biome = biomeSelect?.value || 'all';
+    const rarity = raritySelect?.value || 'all';
 
     let list = pets.filter(p => {
-      const mBiome = b === 'all' || p.biome === b;
-      const mRarity = r === 'all' || p.rarity === r;
-      const mQuery = !q || p.name.toLowerCase().includes(q) || p.biome.toLowerCase().includes(q) || p.rarity.toLowerCase().includes(q);
-      return mBiome && mRarity && mQuery;
+      const matchBiome = biome === 'all' || p.biome === biome;
+      const matchRarity = rarity === 'all' || p.rarity === rarity;
+      const matchQuery = !query || 
+        p.name.toLowerCase().includes(query) ||
+        p.biome.toLowerCase().includes(query) ||
+        p.rarity.toLowerCase().includes(query);
+
+      return matchBiome && matchRarity && matchQuery;
     });
 
-    // Sort by income
-    list.sort((a, b) => sortAsc ? (a.income - b.income) : (b.income - a.income));
+    // Sort by income (Default: Low -> High)
+    list.sort((a, b) => sortAscending ? (a.income - b.income) : (b.income - a.income));
 
-    if (countEl) countEl.textContent = list.length;
+    if (filterCount) filterCount.textContent = list.length;
 
-    if (tbody) {
+    // Render Cards View
+    if (cardsContainer) {
       if (list.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding: 14px; color: var(--dim);">Keine Pets gefunden.</td></tr>`;
-        return;
+        cardsContainer.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 32px; color: var(--text-dim);">
+            Keine Pets für diesen Filter gefunden.
+          </div>
+        `;
+      } else {
+        cardsContainer.innerHTML = list.map((p, idx) => `
+          <div class="pet-card">
+            <div class="pet-card-header">
+              <div>
+                <span class="pet-number">#${idx + 1}</span>
+                <div class="pet-name">${p.name}</div>
+                <div class="pet-biome-pill">📍 ${p.biome}</div>
+              </div>
+              <span class="badge-rarity rarity-${p.rarity}">${p.rarity}</span>
+            </div>
+
+            <div class="pet-income-banner">
+              <span class="pet-income-label">Verdienst</span>
+              <span class="pet-income-val">${formatMoney(p.income)}</span>
+            </div>
+          </div>
+        `).join('');
       }
-      tbody.innerHTML = list.map((p, idx) => `
-        <tr>
-          <td style="color: var(--dim);">${idx + 1}</td>
-          <td><strong>${p.name}</strong></td>
-          <td><code>${p.biome}</code></td>
-          <td><span class="badge rarity-${p.rarity}">${p.rarity}</span></td>
-          <td style="text-align: right; font-family: var(--mono); font-weight: 700; color: var(--text);">${fmt(p.income)}</td>
-        </tr>
-      `).join('');
+    }
+
+    // Render Table View
+    if (tableBody) {
+      if (list.length === 0) {
+        tableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 20px; color: var(--text-dim);">Keine Pets gefunden.</td></tr>`;
+      } else {
+        tableBody.innerHTML = list.map((p, idx) => `
+          <tr>
+            <td style="color: var(--text-dim); font-family: var(--font-mono);">${idx + 1}</td>
+            <td><strong>${p.name}</strong></td>
+            <td><code>${p.biome}</code></td>
+            <td><span class="badge-rarity rarity-${p.rarity}">${p.rarity}</span></td>
+            <td style="text-align: right; font-family: var(--font-mono); font-weight: 700; color: var(--text-main);">${formatMoney(p.income)}</td>
+          </tr>
+        `).join('');
+      }
     }
   }
 
-  if (search) search.addEventListener('input', update);
-  if (biomeSel) biomeSel.addEventListener('change', update);
-  if (raritySel) raritySel.addEventListener('change', update);
+  if (searchInput) searchInput.addEventListener('input', update);
+  if (biomeSelect) biomeSelect.addEventListener('change', update);
+  if (raritySelect) raritySelect.addEventListener('change', update);
 
   if (sortBtn) {
     sortBtn.addEventListener('click', () => {
-      sortAsc = !sortAsc;
-      sortBtn.textContent = sortAsc ? '▲ Wenig ➔ Viel' : '▼ Viel ➔ Wenig';
+      sortAscending = !sortAscending;
+      if (sortIcon) sortIcon.textContent = sortAscending ? '▲' : '▼';
+      if (sortText) sortText.textContent = sortAscending ? 'Wenig ➔ Viel' : 'Viel ➔ Wenig';
       update();
     });
   }
@@ -239,49 +326,50 @@ function renderPets() {
   update();
 }
 
-// Calculator
-function initCalc() {
-  const petSel = document.getElementById('cPet');
-  const sizeSel = document.getElementById('cSize');
-  const mutSel = document.getElementById('cMut');
-  const countInp = document.getElementById('cCount');
-  const totalEl = document.getElementById('cTotal');
-  const minEl = document.getElementById('cMin');
-  const hourEl = document.getElementById('cHour');
+// Income Calculator
+function initCalculator() {
+  const petSelect = document.getElementById('calcPetSelect');
+  const sizeSelect = document.getElementById('calcSizeSelect');
+  const mutSelect = document.getElementById('calcMutSelect');
+  const countInput = document.getElementById('calcCountInput');
+  const totalDisplay = document.getElementById('calcTotalDisplay');
+  const minDisplay = document.getElementById('calcMinDisplay');
+  const hourDisplay = document.getElementById('calcHourDisplay');
 
-  if (!petSel) return;
+  if (!petSelect) return;
 
   // Sorted low to high
   const sorted = [...pets].sort((a, b) => a.income - b.income);
-  petSel.innerHTML = sorted.map(p => `
-    <option value="${p.id}">${p.name} (${p.rarity} — ${fmt(p.income)})</option>
+  petSelect.innerHTML = sorted.map(p => `
+    <option value="${p.id}">${p.name} (${p.rarity} — ${formatMoney(p.income)})</option>
   `).join('');
 
-  // Default to a medium pet
-  const def = sorted.find(p => p.name === 'Brr Brr Patapim') || sorted[0];
-  if (def) petSel.value = def.id;
+  // Default to a solid mid-tier pet
+  const defaultPet = sorted.find(p => p.name === 'Brr Brr Patapim') || sorted[0];
+  if (defaultPet) petSelect.value = defaultPet.id;
 
-  function calc() {
-    const p = pets.find(x => x.id === petSel.value);
-    if (!p) return;
-    const base = Number(p.income) || 0;
-    const s = Number(sizeSel.value) || 1;
-    const m = Number(mutSel.value) || 1;
-    const cnt = Math.max(1, parseInt(countInp.value) || 1);
+  function calculate() {
+    const selected = pets.find(p => p.id === petSelect.value);
+    if (!selected) return;
 
-    const perSec = base * s * m * cnt;
+    const base = Number(selected.income) || 0;
+    const size = Number(sizeSelect.value) || 1;
+    const mut = Number(mutSelect.value) || 1;
+    const count = Math.max(1, parseInt(countInput.value) || 1);
+
+    const perSec = base * size * mut * count;
     const perMin = perSec * 60;
     const perHour = perSec * 3600;
 
-    if (totalEl) totalEl.textContent = fmt(perSec);
-    if (minEl) minEl.textContent = fmt(perMin).replace('/s', '/min');
-    if (hourEl) hourEl.textContent = fmt(perHour).replace('/s', '/hr');
+    if (totalDisplay) totalDisplay.textContent = formatMoney(perSec);
+    if (minDisplay) minDisplay.textContent = formatMoney(perMin).replace('/s', '/min');
+    if (hourDisplay) hourDisplay.textContent = formatMoney(perHour).replace('/s', '/hr');
   }
 
-  petSel.addEventListener('change', calc);
-  sizeSel.addEventListener('change', calc);
-  mutSel.addEventListener('change', calc);
-  countInp.addEventListener('input', calc);
+  petSelect.addEventListener('change', calculate);
+  sizeSelect.addEventListener('change', calculate);
+  mutSelect.addEventListener('change', calculate);
+  countInput.addEventListener('input', calculate);
 
-  calc();
+  calculate();
 }
