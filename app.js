@@ -5,7 +5,7 @@
 
 // 100% Verified in-game datasets
 const FALLBACK_BIOMES = [
-  { "name": "Forest", "speed": 0, "speedFormatted": "0 Speed", "guardian": "Chicken", "topPet": "Brr Brr Patapim ($1.8K/s)" },
+  { "name": "Forest", "speed": 0, "speedFormatted": "0 Speed (Starting)", "guardian": "Chicken", "topPet": "Brr Brr Patapim ($1.8K/s)" },
   { "name": "Lake", "speed": 900, "speedFormatted": "900 Speed", "guardian": "Swan", "topPet": "Leviathan ($12K/s)" },
   { "name": "Desert", "speed": 10000, "speedFormatted": "10K Speed", "guardian": "Scorpion", "topPet": "Sand Spider ($16K/s)" },
   { "name": "Jungle", "speed": 40000, "speedFormatted": "40K Speed", "guardian": "Tiger", "topPet": "Spider ($22K/s)" },
@@ -103,7 +103,7 @@ let pets = FALLBACK_PETS;
 let sortAscending = true; // Default: Low -> High
 let activeView = 'grid'; // 'grid' or 'table'
 
-// Compact Currency Formatter
+// Currency Formatter
 function formatMoney(amount) {
   const n = Number(amount) || 0;
   if (n < 1000) return `$${n}/s`;
@@ -258,7 +258,7 @@ function renderPets() {
       if (list.length === 0) {
         cardsContainer.innerHTML = `
           <div style="grid-column: 1 / -1; text-align: center; padding: 32px; color: var(--text-dim);">
-            Keine Pets für diesen Filter gefunden.
+            No pets found for this filter.
           </div>
         `;
       } else {
@@ -266,7 +266,7 @@ function renderPets() {
           <div class="pet-card">
             <div class="pet-card-header">
               <div>
-                <span class="pet-number">Nr. ${idx + 1}</span>
+                <span class="pet-number">No. ${idx + 1}</span>
                 <div class="pet-name">${p.name}</div>
                 <div class="pet-biome-pill">${p.biome}</div>
               </div>
@@ -274,7 +274,7 @@ function renderPets() {
             </div>
 
             <div class="pet-income-banner">
-              <span class="pet-income-label">Verdienst</span>
+              <span class="pet-income-label">Income</span>
               <span class="pet-income-val">${formatMoney(p.income)}</span>
             </div>
           </div>
@@ -285,7 +285,7 @@ function renderPets() {
     // Render Table View
     if (tableBody) {
       if (list.length === 0) {
-        tableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 20px; color: var(--text-dim);">Keine Pets gefunden.</td></tr>`;
+        tableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 20px; color: var(--text-dim);">No pets found.</td></tr>`;
       } else {
         tableBody.innerHTML = list.map((p, idx) => `
           <tr>
@@ -307,7 +307,7 @@ function renderPets() {
   if (sortBtn) {
     sortBtn.addEventListener('click', () => {
       sortAscending = !sortAscending;
-      if (sortText) sortText.textContent = sortAscending ? 'Sortierung: Aufsteigend' : 'Sortierung: Absteigend';
+      if (sortText) sortText.textContent = sortAscending ? 'Sort: Ascending' : 'Sort: Descending';
       update();
     });
   }
