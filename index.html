@@ -1,103 +1,63 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="de" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Steal an Egg Wiki — Roblox Game Database</title>
-  <meta name="description" content="Official data for Steal an Egg on Roblox: Biomes, Speed requirements, All Pets, Mutations, and Multipliers.">
+  <title>Steal an Egg Wiki (Roblox)</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header>
-    <div class="header-inner">
-      <div class="brand">
+    <div class="header-wrap">
+      <div class="logo">
         <span>🥚</span>
         <span>Steal an Egg Wiki</span>
-        <span class="badge-tag">Roblox</span>
       </div>
-      <div class="header-links">
-        <button id="themeToggleBtn" class="btn-sm" title="Toggle Light/Dark Theme">
-          <span id="themeIcon">🌓</span> Theme
-        </button>
-        <a href="https://github.com/kipperadrian3-boop/Steal-An-Egg-Wiki" target="_blank" rel="noopener noreferrer" class="btn-sm">
-          GitHub
-        </a>
+      <div style="display: flex; gap: 6px;">
+        <button id="themeBtn" class="btn" title="Theme">🌓</button>
+        <a href="https://github.com/kipperadrian3-boop/Steal-An-Egg-Wiki" target="_blank" rel="noopener noreferrer" class="btn">GitHub</a>
       </div>
     </div>
   </header>
 
   <nav>
-    <div class="nav-inner" id="tabBar">
-      <button class="tab-link active" data-tab="biomes">🗺️ Biomes (<span id="biomeTabCount">10</span>)</button>
-      <button class="tab-link" data-tab="pets">🥚 Pets Database (<span id="petTabCount">86</span>)</button>
-      <button class="tab-link" data-tab="mutations">⚡ Mutations</button>
-      <button class="tab-link" data-tab="upgrades">🏏 Upgrades & Speed</button>
-      <button class="tab-link" data-tab="calculator">🧮 Calculator</button>
-      <button class="tab-link" data-tab="codes">🎁 Codes & Events</button>
+    <div class="nav-wrap">
+      <button class="tab active" data-tab="pets">🥚 Pets (Wenig ➔ Viel)</button>
+      <button class="tab" data-tab="biomes">🗺️ Biome & Speed</button>
+      <button class="tab" data-tab="mutations">⚡ Mutationen</button>
+      <button class="tab" data-tab="calc">🧮 Rechner</button>
+      <button class="tab" data-tab="codes">🎁 Codes</button>
     </div>
   </nav>
 
   <main>
 
     <!-- ==========================================
-         TAB 1: BIOMES
+         TAB 1: PETS (WENIG ➔ VIEL VERDIENST)
          ========================================== -->
-    <section id="panel-biomes" class="tab-panel active">
-      <div class="content-box">
-        <h2 class="section-title">Biomes & Speed Thresholds</h2>
-        <p class="section-subtitle">You must reach the required speed on the treadmill to enter each biome without being caught by the guardian.</p>
-
-        <div class="table-wrapper" style="margin-bottom: 20px;">
-          <table>
-            <thead>
-              <tr>
-                <th>Biome</th>
-                <th>Required Speed</th>
-                <th>Guardian</th>
-                <th>Top Pet (Base $/s)</th>
-                <th>Total Pets</th>
-              </tr>
-            </thead>
-            <tbody id="biomesTableBody">
-              <!-- Rendered via JS -->
-            </tbody>
-          </table>
-        </div>
-
-        <h3 class="section-title" style="font-size: 1rem; margin-top: 24px;">Biome Cards & Pet Rosters</h3>
-        <div class="biome-grid" id="biomesCardsGrid" style="margin-top: 12px;">
-          <!-- Rendered via JS -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================
-         TAB 2: PETS DATABASE
-         ========================================== -->
-    <section id="panel-pets" class="tab-panel">
-      <div class="content-box">
-        <h2 class="section-title">All Pets Database</h2>
-        <p class="section-subtitle">Verified in-game pets across all 10 biomes and limited Brainrot store eggs.</p>
-
-        <div class="search-bar">
-          <input type="text" id="petSearchInput" class="search-input" placeholder="Filter by name, rarity, egg, or biome...">
-          <select id="biomeSelectFilter" class="select-filter">
-            <option value="all">All Biomes</option>
-            <option value="forest">Forest</option>
-            <option value="lake">Lake</option>
-            <option value="desert">Desert</option>
-            <option value="jungle">Jungle</option>
-            <option value="snow">Snow</option>
-            <option value="volcano">Volcano</option>
-            <option value="abyss-ocean">Abyss Ocean</option>
-            <option value="prehistoric">Prehistoric</option>
-            <option value="cosmic">Cosmic</option>
-            <option value="cherry-blossom">Cherry Blossom</option>
-            <option value="brainrot">Brainrot Store</option>
+    <section id="panel-pets" class="panel active">
+      <div class="box">
+        <div class="toolbar">
+          <input type="text" id="searchInp" class="inp" style="flex: 1; min-width: 160px;" placeholder="Pet suchen (z.B. Dog, Dragon, Kitsune)...">
+          
+          <select id="biomeFilter" class="select">
+            <option value="all">Alle Biome</option>
+            <option value="Forest">Forest</option>
+            <option value="Lake">Lake</option>
+            <option value="Desert">Desert</option>
+            <option value="Jungle">Jungle</option>
+            <option value="Snow">Snow</option>
+            <option value="Volcano">Volcano</option>
+            <option value="Abyss Ocean">Abyss Ocean</option>
+            <option value="Prehistoric">Prehistoric</option>
+            <option value="Cosmic">Cosmic</option>
+            <option value="Cherry Blossom">Cherry Blossom</option>
+            <option value="Brainrot Store">Brainrot Store</option>
           </select>
-          <select id="raritySelectFilter" class="select-filter">
-            <option value="all">All Rarities</option>
+
+          <select id="rarityFilter" class="select">
+            <option value="all">Alle Raritäten</option>
             <option value="Common">Common</option>
             <option value="Uncommon">Uncommon</option>
             <option value="Rare">Rare</option>
@@ -110,25 +70,51 @@
             <option value="Divine">Divine</option>
             <option value="Brainrot">Brainrot</option>
           </select>
+
+          <button id="sortBtn" class="btn" title="Sortierung umkehren">▲ Wenig ➔ Viel</button>
         </div>
 
-        <div style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 10px;">
-          Showing <strong id="petFilterCount" style="color: var(--text-main);">0</strong> pets
+        <div style="font-size: 11px; color: var(--dim); margin-bottom: 6px;">
+          Zeige <strong id="petCount" style="color: var(--text);">0</strong> Pets (sortiert nach Verdienst)
         </div>
 
-        <div class="table-wrapper">
+        <div class="tbl-wrap">
           <table>
             <thead>
               <tr>
+                <th style="width: 36px;">#</th>
                 <th>Pet Name</th>
                 <th>Biome</th>
-                <th>Rarity</th>
-                <th>Base Income</th>
-                <th>Egg Location</th>
+                <th>Rarität</th>
+                <th style="text-align: right;">Verdienst ($/s)</th>
               </tr>
             </thead>
-            <tbody id="petsTableBody">
-              <!-- Rendered via JS -->
+            <tbody id="petsBody">
+              <!-- JS rendered -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 2: BIOMES & SPEED
+         ========================================== -->
+    <section id="panel-biomes" class="panel">
+      <div class="box">
+        <div style="font-weight: 700; margin-bottom: 8px;">Biome & Benötigte Speed</div>
+        <div class="tbl-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Biome</th>
+                <th>Speed Grenze</th>
+                <th>Guardian</th>
+                <th>Bestes Pet</th>
+              </tr>
+            </thead>
+            <tbody id="biomesBody">
+              <!-- JS rendered -->
             </tbody>
           </table>
         </div>
@@ -138,132 +124,78 @@
     <!-- ==========================================
          TAB 3: MUTATIONS
          ========================================== -->
-    <section id="panel-mutations" class="tab-panel">
-      <div class="content-box">
-        <h2 class="section-title">Egg Mutations & Multipliers</h2>
-        <p class="section-subtitle">Mutations multiply the base income of a hatched pet. They stack with size multipliers.</p>
-
-        <div class="table-wrapper">
+    <section id="panel-mutations" class="panel">
+      <div class="box">
+        <div style="font-weight: 700; margin-bottom: 8px;">Ei-Mutationen Multiplikatoren</div>
+        <div class="tbl-wrap">
           <table>
             <thead>
               <tr>
                 <th>Mutation</th>
-                <th>Income Multiplier</th>
-                <th>How to Obtain</th>
+                <th>Multiplikator</th>
+                <th>Herkunft</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><strong>Silver</strong></td>
                 <td><code>1.25x</code></td>
-                <td>Random hatch chance from any nest</td>
+                <td>Zufällig beim Ausbrüten</td>
               </tr>
               <tr>
                 <td><strong>Bloom</strong></td>
                 <td><code>1.5x</code></td>
-                <td>Sakura Incubator in the Cherry Blossom biome</td>
+                <td>Sakura Incubator (Cherry Blossom)</td>
               </tr>
               <tr>
                 <td><strong>Golden</strong></td>
                 <td><code>2.0x</code></td>
-                <td>Random hatch chance or Golden Egg nests</td>
+                <td>Zufall / Golden Eggs</td>
               </tr>
               <tr>
                 <td><strong>Rainbow</strong></td>
                 <td><code>2.5x</code></td>
-                <td>Rare world mutation roll</td>
+                <td>Seltener Mutations-Drop</td>
               </tr>
               <tr>
                 <td><strong>Spirit Bloom</strong></td>
                 <td><code>3.0x</code></td>
-                <td>Sakura Incubator roll (Cherry Blossom endgame)</td>
+                <td>Sakura Incubator (Endgame)</td>
               </tr>
             </tbody>
           </table>
         </div>
-
-        <div style="margin-top: 20px; font-size: 0.86rem; color: var(--text-sub);">
-          <strong>🌸 Sakura Incubator:</strong> Unlocked in the Cherry Blossom biome by sacrificing a <code>Crane</code> pet. Allows applying Bloom and Spirit Bloom mutations.
+        <div style="font-size: 11px; color: var(--dim); margin-top: 8px;">
+          * Sakura Incubator wird mit einem <code>Crane</code> Pet im Cherry Blossom Biom freigeschaltet.
         </div>
       </div>
     </section>
 
     <!-- ==========================================
-         TAB 4: UPGRADES & SPEED
+         TAB 4: RECHNER
          ========================================== -->
-    <section id="panel-upgrades" class="tab-panel">
-      <div class="content-box">
-        <h2 class="section-title">Upgrades, Weapons & Base Mechanics</h2>
-        <p class="section-subtitle">Core mechanics for training speed and defending eggs.</p>
-
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Element</th>
-                <th>Type</th>
-                <th>Function</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Treadmill</strong></td>
-                <td>Speed Upgrade</td>
-                <td>Train at base to increase run speed. Needed to survive higher biomes.</td>
-              </tr>
-              <tr>
-                <td><strong>Pen Capacity</strong></td>
-                <td>Base Expansion</td>
-                <td>Expands max equipped pet slots to compound passive income ($/s).</td>
-              </tr>
-              <tr>
-                <td><strong>Bats</strong></td>
-                <td>PvP Tool</td>
-                <td>Hit other players to knock eggs out of their hands or smash event trees.</td>
-              </tr>
-              <tr>
-                <td><strong>World Resets</strong></td>
-                <td>Timer</td>
-                <td>Eggs in all biomes respawn every ~5 minutes (in-game night).</td>
-              </tr>
-              <tr>
-                <td><strong>Pet Index</strong></td>
-                <td>Collection</td>
-                <td>Collecting all 8 pets in a biome awards permanent Speed and Money boosts.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================
-         TAB 5: CALCULATOR
-         ========================================== -->
-    <section id="panel-calculator" class="tab-panel">
-      <div class="content-box">
-        <h2 class="section-title">Pet Income Calculator</h2>
-        <p class="section-subtitle">Calculate exact earnings based on pet, size, mutation, and duplicate count.</p>
-
+    <section id="panel-calc" class="panel">
+      <div class="box">
+        <div style="font-weight: 700; margin-bottom: 8px;">Verdienst Rechner</div>
         <div class="calc-grid">
           <div>
-            <div class="form-group">
-              <label for="calcPet">Pet:</label>
-              <select id="calcPet" class="form-control"></select>
+            <div class="calc-row">
+              <label for="cPet">Pet:</label>
+              <select id="cPet" class="select" style="width: 100%;"></select>
             </div>
-            <div class="form-group">
-              <label for="calcSize">Egg Size Multiplier:</label>
-              <select id="calcSize" class="form-control">
-                <option value="1">Normal Egg (1.0x)</option>
-                <option value="1.25">Medium Egg (1.25x)</option>
-                <option value="1.5">Large Egg (1.5x)</option>
-                <option value="2">Giant Egg (2.0x)</option>
+            <div class="calc-row">
+              <label for="cSize">Ei-Größe:</label>
+              <select id="cSize" class="select" style="width: 100%;">
+                <option value="1">Normal (1.0x)</option>
+                <option value="1.25">Medium (1.25x)</option>
+                <option value="1.5">Groß (1.5x)</option>
+                <option value="2">Riesig (2.0x)</option>
               </select>
             </div>
-            <div class="form-group">
-              <label for="calcMutation">Mutation:</label>
-              <select id="calcMutation" class="form-control">
-                <option value="1">No Mutation (1.0x)</option>
+            <div class="calc-row">
+              <label for="cMut">Mutation:</label>
+              <select id="cMut" class="select" style="width: 100%;">
+                <option value="1">Keine (1.0x)</option>
                 <option value="1.25">Silver (1.25x)</option>
                 <option value="1.5">Bloom (1.5x)</option>
                 <option value="2.0">Golden (2.0x)</option>
@@ -271,18 +203,18 @@
                 <option value="3.0">Spirit Bloom (3.0x)</option>
               </select>
             </div>
-            <div class="form-group">
-              <label for="calcCount">Number of Duplicate Pets in Pen:</label>
-              <input type="number" id="calcCount" class="form-control" value="1" min="1" max="50">
+            <div class="calc-row">
+              <label for="cCount">Anzahl Pets im Pen:</label>
+              <input type="number" id="cCount" class="inp" style="width: 100%;" value="1" min="1" max="50">
             </div>
           </div>
 
-          <div class="calc-output">
-            <div style="font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase;">Total Passive Cashflow</div>
-            <div class="calc-val" id="calcTotal">$0 / s</div>
-            <div style="font-size: 0.82rem; color: var(--text-sub); margin-top: 8px;">
-              <div>Per Minute: <code id="calcMin">$0/m</code></div>
-              <div style="margin-top: 4px;">Per Hour: <code id="calcHour">$0/hr</code></div>
+          <div class="calc-res">
+            <div style="font-size: 11px; color: var(--dim);">Gesamtertrag:</div>
+            <div class="calc-big" id="cTotal">$0 / s</div>
+            <div style="font-size: 11px; color: var(--muted); margin-top: 4px;">
+              Pro Minute: <code id="cMin">$0/m</code><br>
+              Pro Stunde: <code id="cHour">$0/hr</code>
             </div>
           </div>
         </div>
@@ -290,39 +222,16 @@
     </section>
 
     <!-- ==========================================
-         TAB 6: CODES & EVENTS
+         TAB 5: CODES
          ========================================== -->
-    <section id="panel-codes" class="tab-panel">
-      <div class="content-box">
-        <h2 class="section-title">Codes & Weekly Events</h2>
-        
-        <div style="background: var(--bg-subtle); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; margin-bottom: 16px;">
-          <strong>ℹ️ Code Status:</strong> Currently, there is <u>no code redemption system</u> in Steal an Egg. The developers have never released promotional codes. Avoid scam sites or videos claiming to have working codes.
+    <section id="panel-codes" class="panel">
+      <div class="box">
+        <div style="font-weight: 700; margin-bottom: 6px;">Codes Status</div>
+        <div style="color: var(--muted); font-size: 12px; margin-bottom: 8px;">
+          Im echten Spiel <strong>Steal an Egg</strong> gibt es aktuell <u>kein Code-System</u> und keine offiziellen Codes. Falle nicht auf angebliche Promo-Codes auf Social Media herein.
         </div>
-
-        <h3 class="section-title" style="font-size: 0.95rem; margin-bottom: 8px;">Recurring Events</h3>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Event</th>
-                <th>Schedule</th>
-                <th>Details</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Admin Abuse Saturday</strong></td>
-                <td>Every Saturday</td>
-                <td>Developers boost egg spawn frequencies and multiplier drops across all biomes.</td>
-              </tr>
-              <tr>
-                <td><strong>Great Bloom</strong></td>
-                <td>Seasonal / Random</td>
-                <td>Sakura trees spawn in biomes that drop spirit petals when hit with a bat.</td>
-              </tr>
-            </tbody>
-          </table>
+        <div style="font-size: 11px; color: var(--dim); border-top: 1px solid var(--border); padding-top: 6px;">
+          Event: Jeden Samstag gibt es <strong>Admin Abuse</strong> (erhöhte Spawns & Speed-Multiplikatoren).
         </div>
       </div>
     </section>
@@ -330,9 +239,9 @@
   </main>
 
   <footer>
-    <div class="footer-inner">
-      <span>Steal an Egg Wiki — Community Open Source Project (MIT)</span>
-      <span>Not affiliated with Roblox Corp.</span>
+    <div class="footer-wrap">
+      <span>Steal an Egg Wiki (Roblox) — Open Source (MIT)</span>
+      <a href="https://github.com/kipperadrian3-boop/Steal-An-Egg-Wiki" target="_blank" rel="noopener noreferrer" style="color: var(--dim);">GitHub</a>
     </div>
   </footer>
 

@@ -1,102 +1,72 @@
 [
   {
-    "id": "forest",
     "name": "Forest",
-    "speedReq": 0,
-    "speedReqFormatted": "0 Speed (Starting)",
+    "speed": 0,
+    "speedFormatted": "0 Speed",
     "guardian": "Chicken",
-    "topPet": "Brr Brr Patapim ($1.8K/s)",
-    "petCount": 8,
-    "pets": ["Chicken", "Dog", "Bird", "Owl", "Raccoon", "Fox", "Bear", "Brr Brr Patapim"]
+    "topPet": "Brr Brr Patapim ($1.8K/s)"
   },
   {
-    "id": "lake",
     "name": "Lake",
-    "speedReq": 900,
-    "speedReqFormatted": "900 Speed",
+    "speed": 900,
+    "speedFormatted": "900 Speed",
     "guardian": "Swan",
-    "topPet": "Leviathan ($12K/s)",
-    "petCount": 8,
-    "pets": ["Frog", "Duckling", "Catfish", "Turtle", "Trulimero Trulicina", "Swan", "Axolotl", "Leviathan"]
+    "topPet": "Leviathan ($12K/s)"
   },
   {
-    "id": "desert",
     "name": "Desert",
-    "speedReq": 10000,
-    "speedReqFormatted": "10,000 Speed (10K)",
+    "speed": 10000,
+    "speedFormatted": "10K Speed",
     "guardian": "Scorpion",
-    "topPet": "Sand Spider ($16K/s)",
-    "petCount": 8,
-    "pets": ["Jerboa", "Fennec", "Camel", "Snake", "Tob Tobi Tob Tob", "Scorpion", "Royal Sphinx", "Sand Spider"]
+    "topPet": "Sand Spider ($16K/s)"
   },
   {
-    "id": "jungle",
     "name": "Jungle",
-    "speedReq": 40000,
-    "speedReqFormatted": "40,000 Speed (40K)",
+    "speed": 40000,
+    "speedFormatted": "40K Speed",
     "guardian": "Tiger",
-    "topPet": "Ancient Jaguar ($30K/s)",
-    "petCount": 8,
-    "pets": ["Chimpanzee", "Toucan", "Crocodile", "Gorilla", "Orangutini Ananassini", "Tiger", "Spider", "Ancient Jaguar"]
+    "topPet": "Spider ($22K/s)"
   },
   {
-    "id": "snow",
     "name": "Snow",
-    "speedReq": 170000,
-    "speedReqFormatted": "170,000 Speed (170K)",
+    "speed": 170000,
+    "speedFormatted": "170K Speed",
     "guardian": "Yeti",
-    "topPet": "Ice Dragon ($65M/s)",
-    "petCount": 8,
-    "pets": ["Penguin", "Walrus", "Polar Bear", "Sabertooth Tiger", "Mammoth", "King Mammoth", "Yeti", "Ice Dragon"]
+    "topPet": "Ice Dragon ($65M/s)"
   },
   {
-    "id": "volcano",
     "name": "Volcano",
-    "speedReq": 700000,
-    "speedReqFormatted": "700,000 Speed (700K)",
+    "speed": 700000,
+    "speedFormatted": "700K Speed",
     "guardian": "Hellhound",
-    "topPet": "Lava Dragon ($100M/s)",
-    "petCount": 8,
-    "pets": ["Lava Gecko", "Lava Frog", "Flaming Bull", "Lava Iguana", "Chillin Chilli", "Cerberus", "Phoenix", "Lava Dragon"]
+    "topPet": "Lava Dragon ($100M/s)"
   },
   {
-    "id": "abyss-ocean",
     "name": "Abyss Ocean",
-    "speedReq": 2500000,
-    "speedReqFormatted": "2,500,000 Speed (2.5M)",
+    "speed": 2500000,
+    "speedFormatted": "2.5M Speed",
     "guardian": "Moby",
-    "topPet": "El Maja ($130M/s)",
-    "petCount": 8,
-    "pets": ["Parrotfish", "Swordfish", "Shark", "Orca", "Whale Shark", "Beluga Whale", "Kraken", "El Maja"]
+    "topPet": "El Maja ($130M/s)"
   },
   {
-    "id": "prehistoric",
     "name": "Prehistoric",
-    "speedReq": 17000000,
-    "speedReqFormatted": "17,000,000 Speed (17M)",
+    "speed": 17000000,
+    "speedFormatted": "17M Speed",
     "guardian": "T-Rex",
-    "topPet": "Mosasaurus ($180M/s)",
-    "petCount": 8,
-    "pets": ["Dodo", "Velociraptor", "Pterodactyl", "Ankylosaurus", "Triceratops", "Bronto", "Tyrannosaurus Rex", "Mosasaurus"]
+    "topPet": "Mosasaurus ($180M/s)"
   },
   {
-    "id": "cosmic",
     "name": "Cosmic",
-    "speedReq": 700000000,
-    "speedReqFormatted": "700,000,000 Speed (700M)",
+    "speed": 700000000,
+    "speedFormatted": "700M Speed",
     "guardian": "Dragon",
-    "topPet": "Unicorn ($1B/s)",
-    "petCount": 8,
-    "pets": ["Centapede", "Cosmic Gecko", "Cosmic Gorilla", "La Vacca Saturno Saturnita", "Cosmic Skeleton Boss", "Cosmic Dragon", "Eternal Lunar Dragon", "Unicorn"]
+    "topPet": "Unicorn ($1B/s)"
   },
   {
-    "id": "cherry-blossom",
     "name": "Cherry Blossom",
-    "speedReq": 2500000000,
-    "speedReqFormatted": "2,500,000,000 Speed (2.5B)",
+    "speed": 2500000000,
+    "speedFormatted": "2.5B Speed",
     "guardian": "Nine-Tails Kitsune",
-    "topPet": "Kitsune ($1.8B/s)",
-    "petCount": 8,
-    "pets": ["Crane", "Salamander", "Red Panda", "Snow Owl", "Koi", "Stag", "Oni Tiger", "Kitsune"]
+    "topPet": "Kitsune ($1.8B/s)"
   }
 ]
