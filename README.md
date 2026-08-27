@@ -17,14 +17,6 @@ A fast, lightweight, and factual **Monochrome (Black & White)** Wiki for the Rob
 
 ---
 
-## 🌐 Live Website (GitHub Pages)
-
-1. Go to repository **Settings** > **Pages**
-2. Under **Branch**, select `main` (root `/`) and click **Save**
-3. URL: **`https://kipperadrian3-boop.github.io/Steal-An-Egg-Wiki/`**
-
----
-
 ## 📂 File Structure
 
 ```
