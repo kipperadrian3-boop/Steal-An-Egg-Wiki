@@ -76,11 +76,5 @@
   { "id": "p75", "name": "Eternal Lunar Dragon", "biome": "Cosmic", "rarity": "Eternal", "income": 250000000, "incomeFormatted": "$250M/s" },
   { "id": "p76", "name": "Oni Tiger", "biome": "Cherry Blossom", "rarity": "Eternal", "income": 350000000, "incomeFormatted": "$350M/s" },
   { "id": "p77", "name": "Unicorn", "biome": "Cosmic", "rarity": "Divine", "income": 1000000000, "incomeFormatted": "$1B/s" },
-  { "id": "p78", "name": "Kitsune", "biome": "Cherry Blossom", "rarity": "Divine", "income": 1800000000, "incomeFormatted": "$1.8B/s" },
-  
-  { "id": "b01", "name": "Bananita Dolphinita", "biome": "Brainrot Store", "rarity": "Brainrot", "income": 100000, "incomeFormatted": "$100K/s" },
-  { "id": "b02", "name": "Belula Beluga", "biome": "Brainrot Store", "rarity": "Brainrot", "income": 500000, "incomeFormatted": "$500K/s" },
-  { "id": "b03", "name": "Mangolini Parrochini", "biome": "Brainrot Store", "rarity": "Brainrot", "income": 2000000, "incomeFormatted": "$2M/s" },
-  { "id": "b04", "name": "Bomboclat Crocolat", "biome": "Brainrot Store", "rarity": "Brainrot", "income": 10000000, "incomeFormatted": "$10M/s" },
-  { "id": "b05", "name": "Strawberry Elephant", "biome": "Brainrot Store", "rarity": "Brainrot", "income": 50000000, "incomeFormatted": "$50M/s" }
+  { "id": "p78", "name": "Kitsune", "biome": "Cherry Blossom", "rarity": "Divine", "income": 1800000000, "incomeFormatted": "$1.8B/s" }
 ]

@@ -5,7 +5,7 @@
 
 // 100% Verified in-game datasets
 const FALLBACK_BIOMES = [
-  { "name": "Forest", "speed": 0, "speedFormatted": "0 Speed (Start)", "guardian": "Chicken", "topPet": "Brr Brr Patapim ($1.8K/s)" },
+  { "name": "Forest", "speed": 0, "speedFormatted": "0 Speed", "guardian": "Chicken", "topPet": "Brr Brr Patapim ($1.8K/s)" },
   { "name": "Lake", "speed": 900, "speedFormatted": "900 Speed", "guardian": "Swan", "topPet": "Leviathan ($12K/s)" },
   { "name": "Desert", "speed": 10000, "speedFormatted": "10K Speed", "guardian": "Scorpion", "topPet": "Sand Spider ($16K/s)" },
   { "name": "Jungle", "speed": 40000, "speedFormatted": "40K Speed", "guardian": "Tiger", "topPet": "Spider ($22K/s)" },
@@ -95,18 +95,12 @@ const FALLBACK_PETS = [
   { "id": "p75", "name": "Eternal Lunar Dragon", "biome": "Cosmic", "rarity": "Eternal", "income": 250000000 },
   { "id": "p76", "name": "Oni Tiger", "biome": "Cherry Blossom", "rarity": "Eternal", "income": 350000000 },
   { "id": "p77", "name": "Unicorn", "biome": "Cosmic", "rarity": "Divine", "income": 1000000000 },
-  { "id": "p78", "name": "Kitsune", "biome": "Cherry Blossom", "rarity": "Divine", "income": 1800000000 },
-  
-  { "id": "b01", "name": "Bananita Dolphinita", "biome": "Brainrot Store", "rarity": "Brainrot", "income": 100000 },
-  { "id": "b02", "name": "Belula Beluga", "biome": "Brainrot Store", "rarity": "Brainrot", "income": 500000 },
-  { "id": "b03", "name": "Mangolini Parrochini", "biome": "Brainrot Store", "rarity": "Brainrot", "income": 2000000 },
-  { "id": "b04", "name": "Bomboclat Crocolat", "biome": "Brainrot Store", "rarity": "Brainrot", "income": 10000000 },
-  { "id": "b05", "name": "Strawberry Elephant", "biome": "Brainrot Store", "rarity": "Brainrot", "income": 50000000 }
+  { "id": "p78", "name": "Kitsune", "biome": "Cherry Blossom", "rarity": "Divine", "income": 1800000000 }
 ];
 
 let biomes = FALLBACK_BIOMES;
 let pets = FALLBACK_PETS;
-let sortAscending = true; // Wenig -> Viel
+let sortAscending = true; // Default: Low -> High
 let activeView = 'grid'; // 'grid' or 'table'
 
 // Compact Currency Formatter
@@ -146,10 +140,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Theme Toggle
 function initTheme() {
   const btn = document.getElementById('themeToggleBtn');
-  const icon = document.getElementById('themeIcon');
   const saved = localStorage.getItem('sae_theme') || 'dark';
   document.documentElement.setAttribute('data-theme', saved);
-  if (icon) icon.textContent = saved === 'dark' ? '🌓' : '☀️';
 
   if (btn) {
     btn.addEventListener('click', () => {
@@ -157,7 +149,6 @@ function initTheme() {
       const next = cur === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
       localStorage.setItem('sae_theme', next);
-      if (icon) icon.textContent = next === 'dark' ? '🌓' : '☀️';
     });
   }
 }
@@ -218,7 +209,7 @@ function renderBiomes() {
     <div class="biome-card">
       <div class="biome-header">
         <span class="biome-title">${idx + 1}. ${b.name}</span>
-        <span class="speed-tag">⚡ ${b.speedFormatted}</span>
+        <span class="speed-tag">${b.speedFormatted}</span>
       </div>
       <div class="biome-detail">
         Guardian: <strong>${b.guardian}</strong>
@@ -239,7 +230,6 @@ function renderPets() {
   const biomeSelect = document.getElementById('biomeSelect');
   const raritySelect = document.getElementById('raritySelect');
   const sortBtn = document.getElementById('sortToggleBtn');
-  const sortIcon = document.getElementById('sortIcon');
   const sortText = document.getElementById('sortText');
 
   function update() {
@@ -276,9 +266,9 @@ function renderPets() {
           <div class="pet-card">
             <div class="pet-card-header">
               <div>
-                <span class="pet-number">#${idx + 1}</span>
+                <span class="pet-number">Nr. ${idx + 1}</span>
                 <div class="pet-name">${p.name}</div>
-                <div class="pet-biome-pill">📍 ${p.biome}</div>
+                <div class="pet-biome-pill">${p.biome}</div>
               </div>
               <span class="badge-rarity rarity-${p.rarity}">${p.rarity}</span>
             </div>
@@ -317,8 +307,7 @@ function renderPets() {
   if (sortBtn) {
     sortBtn.addEventListener('click', () => {
       sortAscending = !sortAscending;
-      if (sortIcon) sortIcon.textContent = sortAscending ? '▲' : '▼';
-      if (sortText) sortText.textContent = sortAscending ? 'Wenig ➔ Viel' : 'Viel ➔ Wenig';
+      if (sortText) sortText.textContent = sortAscending ? 'Sortierung: Aufsteigend' : 'Sortierung: Absteigend';
       update();
     });
   }
